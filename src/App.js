@@ -160,6 +160,7 @@ const App = () =>{
  */
 import React from 'react';
 import './App.css';
+import { render } from '@testing-library/react';
 
 const Tampilan1 = ({warna}) => { 
     if(warna==="merah"){
@@ -177,14 +178,42 @@ const Penguji = ({nilai}) => {
     return <div style={{color: 'red'}}>Nilai Uji Salah</div>
   }
 } 
+const Tampilan2 = ({value}) => {
+  let teks;
+  switch(value){
+  case true: 
+    teks = <div>Benar</div>
+    break;
+  case false:
+    teks = <div>Salah</div>
+    break;
+  default:
+    teks = <div>Tidak Diketahui</div>
+  break;
+  }
+  return teks;
+  
+  }
+
 
 const App = () => {
+  const Nilaiuji = true;
+  const TestingVal = true;
   return <>
    <h1>Aplikasi Kita</h1>
+   {Nilaiuji && <div>Benar dengan Short Circuit Evaluation</div>}
+
+  
    <div style={{color: 'blue'}}> Warna</div>
    <Tampilan1 warna='merah'/>
    <Penguji nilai={false} />
    <Penguji nilai />
+   <Tampilan2 />
+   <Tampilan2 value/>
+   <Tampilan2 value={false}/>
+   
    </>
+   
+  
 }
 export default App;
