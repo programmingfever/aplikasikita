@@ -187,5 +187,4 @@ const App = () => {
    <Penguji nilai />
    </>
 }
-
 export default App;
